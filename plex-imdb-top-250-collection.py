@@ -40,21 +40,18 @@ if __name__ == "__main__":
     collection_title = "IMDb Top 250 Movies"
     missing_movies = []
 
-    plex_movie_search = plex_movies.searchMovies()
-    movie_found = False
     for imdb_top_250_movie in imdb_top_250_movies:
         movie_found = False
-        for plex_movie in plex_movie_search:
-            for guid in plex_movie.guids:
-                if 'imdb' in guid.id:
-                    clean_id = guid.id.replace('imdb://tt','')
-                    if clean_id == imdb_top_250_movie.movieID:
-                        #print(plex_movie.title + ' is in the IMDb Top 250 Movies list.')
-                        plex_movie.addCollection(collection_title)
-                        #plex_movie.removeCollection(collection_title)
-                        movie_found = True
-        if movie_found == False:
+        print(imdb_top_250_movie.movieID)
+        try:
+            plex_movie = plex_movies.getGuid('imdb://tt' + imdb_top_250_movie.movieID)
+            movie_found = True
+        except:
             missing_movies.append(imdb_top_250_movie)
+
+        if movie_found:
+            plex_movie.addCollection(collection_title)
+            # plex_movie.removeCollection(collection_title)
 
     print('Missing Movies:')
     for missing_movie in missing_movies:
