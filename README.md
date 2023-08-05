@@ -29,4 +29,4 @@ Note that `plex_server` is the server _name_ and not the URL.
 
 If you want to use this for an IMDB user list instead, such as the excellent [Spike Lee's Essential Film List (Revised)](https://www.imdb.com/list/ls031959383/) you can easily do so.
 
-Manually change the `collection_title` string (ia can't scrape the collection titles AFAIK), and just kludge the `imdb_top_250_movies` variable to call `ia.get_movie_list('ls031959383')` instead.
+Manually change the `collection_title` string (cinemagoer can't scrape the collection titles AFAIK), and just kludge the `imdb_top_250_movies` variable to call `ia.get_movie_list('ls031959383')` instead.
