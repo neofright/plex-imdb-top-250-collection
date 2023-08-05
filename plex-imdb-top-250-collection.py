@@ -42,7 +42,6 @@ if __name__ == "__main__":
 
     for imdb_top_250_movie in imdb_top_250_movies:
         movie_found = False
-        print(imdb_top_250_movie.movieID)
         try:
             plex_movie = plex_movies.getGuid('imdb://tt' + imdb_top_250_movie.movieID)
             movie_found = True
